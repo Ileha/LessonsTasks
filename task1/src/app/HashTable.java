@@ -1,5 +1,9 @@
 package app;
 
+interface ISetter<T> {
+    void set(ListNode<T> value);
+}
+
 public class HashTable<T> {
     private HashTableContainer<T> container;
     private float loadFactor = 0.75f;
@@ -16,14 +20,26 @@ public class HashTable<T> {
     }
 
     public void Insert(T newValue) {
-        int array_pos = container.Capacity() % newValue.hashCode();
+        int array_pos = newValue.hashCode() % container.Capacity();
         ListNode<T> e = container.container.get(array_pos);
-        while (e != null) {
-            e = e.next;
+        ISetter<T> setter = null;
+        if (e == null) {
+            setter = (ListNode<T> val) -> { container.container.set(array_pos, val); };
         }
-        e = new ListNode<T>();
-        e.Insert(newValue);
+        else {
+            while (e != null) {
+                if (e.next == null) {
+                    ListNode<T> finalE = e;
+                    setter = (ListNode<T> val) -> {
+                        finalE.next = val;
+                    };
+                }
+                e = e.next;
+            }
+        }
+        setter.set(new ListNode<T>(newValue));
     }
+
     public String toString() {
         StringBuilder res = new StringBuilder();
 
@@ -31,9 +47,10 @@ public class HashTable<T> {
         for (ListNode<T> node: container.container) {
             res.append(String.format("%s: ", k));
             k++;
-            for (ListNode<T> e = node; node!=null; e = e.next) {
+            for (ListNode<T> e = node; e!=null; e = e.next) {
                 res.append(e.toString()+" ");
             }
+            res.append("\n");
         }
         return res.toString();
     }

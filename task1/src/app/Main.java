@@ -8,7 +8,11 @@ public class Main {
         HashTable<Integer> dict = new HashTable<Integer>(10);
 
         dict.Insert(10);
+        dict.Insert(10);
+        dict.Insert(20);
+        dict.Insert(30);
         dict.Insert(11);
+        dict.Insert(31);
         dict.Insert(14);
 
         System.out.print(dict);

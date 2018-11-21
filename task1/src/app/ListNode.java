@@ -4,6 +4,10 @@ class ListNode<T> {
     T value;
     ListNode<T> next;
 
+    ListNode(T value) {
+        this.value = value;
+    }
+
     void Insert(T newValue) {
         value = newValue;
     }
