@@ -22,22 +22,21 @@ public class HashTable<T> {
     public void Insert(T newValue) {
         int array_pos = newValue.hashCode() % container.Capacity();
         ListNode<T> e = container.container.get(array_pos);
-        ISetter<T> setter = null;
+        ListNode<T> entering_value = new ListNode<T>(newValue);
         if (e == null) {
-            setter = (ListNode<T> val) -> { container.container.set(array_pos, val); };
+            container.container.set(array_pos, entering_value);
         }
         else {
-            while (e != null) {
-                if (e.next == null) {
-                    ListNode<T> finalE = e;
-                    setter = (ListNode<T> val) -> {
-                        finalE.next = val;
-                    };
+            for (ListNode<T> i = e; i != null; i = i.next) {
+                if (i.equals(entering_value)) {
+                    break;
                 }
-                e = e.next;
+                if (i.next == null) {
+                    i.next = entering_value;
+                    break;
+                }
             }
         }
-        setter.set(new ListNode<T>(newValue));
     }
 
     public String toString() {
