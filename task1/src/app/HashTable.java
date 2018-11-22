@@ -1,9 +1,5 @@
 package app;
 
-interface ISetter<T> {
-    void set(ListNode<T> value);
-}
-
 public class HashTable<T> {
     private HashTableContainer<T> container;
     private float loadFactor = 0.75f;

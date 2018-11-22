@@ -3,24 +3,26 @@ package app;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Main {
     static HashMap<String, KeyValue> data = new HashMap<String, KeyValue>();
     static ArrayList<KeyValue> list_data = new ArrayList<KeyValue>();
 
     public static void main(String[] args) {
-        //String in = "aa aa bbb bbb bbb bbb bbb c c c c c c c c c";
+        String in = "aa aa bbb ma bbb bbb bbb bbb c c c c ka c c c c c ka ka ka ka ka ma";
         //String in = "aa c c c c c c c c c c c c c c c c c c c c c c c c c c c";
-        String in = "aa aa aa aa aa bbb bbb bbb bbb c c c c c c c c c c c c c c c";
+        //String in = "aa aa aa aa aa bbb bbb bbb bbb c c c c c c c c c c c c c c c";
 
-        String[] split = in.split(" ");
+        Scanner reader = new Scanner(in);
 
-        for (int i = 0; i < split.length; i++) {
+        while (reader.hasNext()) {
+            String split = reader.next();
             try {
-                data.get(split[i]).Increment();
+                data.get(split).Increment();
             } catch (NullPointerException err) {
-                KeyValue contain_data = new KeyValue(split[i]);
-                data.put(split[i], contain_data);
+                KeyValue contain_data = new KeyValue(split);
+                data.put(split, contain_data);
                 list_data.add(contain_data);
             }
         }
