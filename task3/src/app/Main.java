@@ -4,11 +4,12 @@ import app.Solver.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
+import java.io.*;
 
 public class Main {
 
-    public static void main(String[] args) {
-        String in = "43 6 5 9 * / - 10 +";
+    public static void main(String[] args) throws IOException {
+        //String in = "43 6 5 9 * / - 10 +";
         Stack<Float> data = new Stack<Float>();
 
         ArrayList<ISolver> commands = new ArrayList<ISolver>();
@@ -18,7 +19,8 @@ public class Main {
         commands.add(new Multiply());
         commands.add(new Divide());
 
-        Scanner reader = new Scanner(in);
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        Scanner reader = new Scanner(in.readLine());
 
         while (reader.hasNext()) {
             String split = reader.next();

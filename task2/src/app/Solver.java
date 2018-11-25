@@ -4,17 +4,19 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.io.*;
 
-public class Main {
+public class Solver {
     static HashMap<String, KeyValue> data = new HashMap<String, KeyValue>();
     static ArrayList<KeyValue> list_data = new ArrayList<KeyValue>();
 
-    public static void main(String[] args) {
-        String in = "aa aa bbb ma bbb bbb bbb bbb c c c c ka c c c c c ka ka ka ka ka ma";
+    public static void main(String[] args) throws IOException {
+        //String in = "aa aa bbb ma bbb bbb bbb bbb c c c c ka c c c c c ka ka ka ka ka ma";
         //String in = "aa c c c c c c c c c c c c c c c c c c c c c c c c c c c";
         //String in = "aa aa aa aa aa bbb bbb bbb bbb c c c c c c c c c c c c c c c";
 
-        Scanner reader = new Scanner(in);
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        Scanner reader = new Scanner(in.readLine());
 
         while (reader.hasNext()) {
             String split = reader.next();
