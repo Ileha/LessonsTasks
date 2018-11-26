@@ -9,6 +9,7 @@ import java.io.*;
 public class Solver {
     static HashMap<String, KeyValue> data = new HashMap<String, KeyValue>();
     static ArrayList<KeyValue> list_data = new ArrayList<KeyValue>();
+    static WordData wordData = new WordData(10);
 
     public static void main(String[] args) throws IOException {
         //String in = "aa aa bbb ma bbb bbb bbb bbb c c c c ka c c c c c ka ka ka ka ka ma";
@@ -23,7 +24,7 @@ public class Solver {
             try {
                 data.get(split).Increment();
             } catch (NullPointerException err) {
-                KeyValue contain_data = new KeyValue(split);
+                KeyValue contain_data = new KeyValue(split, wordData);
                 data.put(split, contain_data);
                 list_data.add(contain_data);
             }
