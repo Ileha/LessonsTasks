@@ -1,4 +1,4 @@
-package app.Solver;
+package app.ISolver;
 
 import java.util.Stack;
 import java.util.regex.Matcher;

@@ -1,19 +1,19 @@
 package app;
 
-import app.Solver.*;
+import app.ISolver.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 import java.io.*;
 
-public class Main {
+public class Solver {
 
     public static void main(String[] args) throws IOException {
         //String in = "43 6 5 9 * / - 10 +";
         Stack<Float> data = new Stack<Float>();
 
         ArrayList<ISolver> commands = new ArrayList<ISolver>();
-        commands.add(new app.Solver.Number());
+        commands.add(new app.ISolver.Number());
         commands.add(new Add());
         commands.add(new Subtract());
         commands.add(new Multiply());

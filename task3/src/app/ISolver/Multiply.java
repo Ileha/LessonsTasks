@@ -1,17 +1,17 @@
-package app.Solver;
+package app.ISolver;
 
 import java.util.Stack;
 
-public class Add extends ISolver {
+public class Multiply extends ISolver {
     @Override
     String GetStringRegex() {
-        return "^[+]$";
+        return "^[*]$";
     }
 
     @Override
     public void Execute(String input_data, Stack<Float> data) {
         Float num1 = data.pop();
         Float num2 = data.pop();
-        data.push(num2+num1);
+        data.push(num2*num1);
     }
 }
